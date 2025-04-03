@@ -1,6 +1,6 @@
 package com.sophossolutions.userpublications.showpublications.domain.local
 
-import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers.GetUserItemDto
+import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users.GetUserItemDto
 import com.sophossolutions.userpublications.showpublications.data.local.repository.UserRepository
 import javax.inject.Inject
 

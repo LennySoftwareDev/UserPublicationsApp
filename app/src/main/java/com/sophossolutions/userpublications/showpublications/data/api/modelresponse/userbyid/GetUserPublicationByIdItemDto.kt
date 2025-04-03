@@ -1,4 +1,4 @@
-package com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getuserbyid
+package com.sophossolutions.userpublications.showpublications.data.api.modelresponse.userbyid
 
 data class GetUserPublicationByIdItemDto(
     val body: String?,

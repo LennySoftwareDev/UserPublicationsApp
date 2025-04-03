@@ -4,8 +4,8 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers.AddressDto
-import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers.CompanyDto
+import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users.AddressDto
+import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users.CompanyDto
 
 @Entity
 @TypeConverters

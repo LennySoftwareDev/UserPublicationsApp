@@ -1,6 +1,6 @@
 package com.sophossolutions.userpublications.showpublications.data.local.repository
 
-import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers.GetUserItemDto
+import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users.GetUserItemDto
 import com.sophossolutions.userpublications.showpublications.data.local.database.dao.UserDao
 import com.sophossolutions.userpublications.showpublications.data.local.database.entities.UserEntity
 import com.sophossolutions.userpublications.showpublications.utils.ResponseApi
@@ -28,7 +28,6 @@ class UserRepository @Inject constructor(
             )
         }
     }
-
 
     suspend fun getAllUsers(): ResponseApi<List<GetUserItemDto>> {
         return try {

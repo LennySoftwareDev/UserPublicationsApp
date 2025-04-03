@@ -1,4 +1,4 @@
-package com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers
+package com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users
 
 data class CompanyDto(
     val bs: String?,

@@ -4,7 +4,7 @@ import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.getusers.GetUserItemDto
+import com.sophossolutions.userpublications.showpublications.data.api.modelresponse.users.GetUserItemDto
 import javax.inject.Inject
 
 @ProvidedTypeConverter

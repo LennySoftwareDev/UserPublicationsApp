@@ -19,7 +19,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -37,13 +37,15 @@ fun UserPublications(
     viewModelUser: ViewModelUser,
     userId: String
 ) {
-    LaunchedEffect(userId) {
-        viewModelUserPublications.getUserById(userId.toInt())
-    }
+
+    viewModelUserPublications.getUserById(userId.toInt())
+
+    viewModelUserPublications.onShowUserPublications()
 
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(top = 48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -54,7 +56,7 @@ fun UserPublications(
             fontWeight = FontWeight.Bold
         )
         HorizontalDivider(thickness = 4.dp)
-        UserPublications(viewModelUser,viewModelUserPublications)
+        UserPublications(viewModelUser, viewModelUserPublications)
     }
 }
 
@@ -64,10 +66,11 @@ fun InformationUser(
     viewModelUserPublications: ViewModelUserPublications
 ) {
 
-    val idUser by viewModelUserPublications.idUser.observeAsState()
+    val idUser by viewModelUserPublications.idUser.collectAsState()
 
     val dataUser by viewModelUser.dataUserLocal.observeAsState()
 
+    //TODO: validar que el usuario exista y que tenga publicaciones
     val user = dataUser!!.result!!.find { it.id == idUser }
 
     user?.let {
@@ -102,9 +105,9 @@ fun UserPublications(
     viewModelUser: ViewModelUser,
     viewModelUserPublications: ViewModelUserPublications
 ) {
-    val isLoading: Boolean by viewModelUserPublications.isLoadingUserInformation.observeAsState(
-        initial = false
-    )
+    val isLoading by viewModelUserPublications.isLoadingUserInformation.collectAsState()
+
+    val userPublication by viewModelUserPublications.mapUser.collectAsState()
 
     if (isLoading) {
         Column(
@@ -128,7 +131,7 @@ fun UserPublications(
     } else {
         InformationUser(viewModelUser, viewModelUserPublications)
         LazyColumn {
-            items(viewModelUserPublications.onShowUserPublications().toList()) {
+            items(userPublication.toList()) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
